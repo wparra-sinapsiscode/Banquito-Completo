@@ -7,6 +7,9 @@ require('dotenv').config();
 // Configurar timezone para Lima, Perú
 process.env.TZ = 'America/Lima';
 
+// Force deployment timestamp
+console.log('🚀 BACKEND FORCE DEPLOY:', new Date().toISOString());
+
 const logger = require('./src/utils/logger');
 
 const app = express();
