@@ -16,7 +16,10 @@
       "Bash(npm run migrate:fresh:*)",
       "Bash(test -f .env)",
       "Bash(sudo service:*)",
-      "Bash(npx sequelize-cli:*)"
+      "Bash(npx sequelize-cli:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git config:*)"
     ],
     "deny": []
   }
