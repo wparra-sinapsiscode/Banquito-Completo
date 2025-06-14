@@ -4,6 +4,7 @@
   "description": "Backend para Sistema Banquito - Gestión de Préstamos Asociativos",
   "main": "server.js",
   "scripts": {
+    "postinstall": "npm install pg pg-hstore --save",
     "start": "node server.js",
     "dev": "nodemon server.js",
     "build": "echo 'Build completed'",
