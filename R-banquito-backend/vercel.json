@@ -22,5 +22,10 @@
     "VERCEL_ENV": "production"
   },
   "installCommand": "npm install && npm install pg pg-hstore --save",
-  "buildCommand": "npm run build"
+  "buildCommand": "npm run build",
+  "functions": {
+    "server.js": {
+      "includeFiles": "node_modules/pg/**"
+    }
+  }
 }
