@@ -19,7 +19,10 @@
       "Bash(npx sequelize-cli:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(git remote set-url:*)",
+      "Bash(NODE_ENV=development node test-logger.js)",
+      "Bash(NODE_ENV=production VERCEL=1 node test-logger.js)"
     ],
     "deny": []
   }
