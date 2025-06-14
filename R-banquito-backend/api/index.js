@@ -1,5 +1,6 @@
 // Forzar verificación e instalación de pg antes de iniciar servidor
 console.log('🔍 Verificando dependencias de PostgreSQL...');
+console.log('🚀 NUCLEAR FIX - FORCE COMMIT TIMESTAMP:', new Date().toISOString());
 
 // Verificar que pg esté instalado
 try {
