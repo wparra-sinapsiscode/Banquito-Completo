@@ -5,7 +5,6 @@ console.log('🔍 Verificando dependencias de PostgreSQL...');
 try {
   const pg = require('pg');
   console.log('✅ pg está instalado correctamente');
-  console.log('📦 Versión de pg:', require('pg/package.json').version);
 } catch (e) {
   console.error('❌ pg NO está instalado:', e.message);
   process.exit(1);
