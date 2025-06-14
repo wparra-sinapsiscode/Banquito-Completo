@@ -16,43 +16,15 @@ app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
 
-// CORS configurado para producción en Vercel
-const corsOptions = {
-  origin: function (origin, callback) {
-    // Permitir requests sin origin (mobile apps, etc.)
-    if (!origin) return callback(null, true);
-    
-    const allowedOrigins = [
-      'http://localhost:3000',
-      'http://localhost:2000',
-      'https://banquito-frontend.vercel.app',
-      'https://banquito-frontend-git-main-williams-projects-3d9bf414.vercel.app'
-    ];
-    
-    // En producción, permitir dominios de Vercel
-    if (process.env.NODE_ENV === 'production') {
-      if (origin.includes('vercel.app') || allowedOrigins.includes(origin)) {
-        return callback(null, true);
-      }
-    } else {
-      // En desarrollo, ser más permisivo
-      return callback(null, true);
-    }
-    
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-    
-    return callback(new Error('Not allowed by CORS'));
-  },
+// CORS más permisivo para solucionar problemas de Vercel
+app.use(cors({
+  origin: true, // Permitir todos los orígenes temporalmente
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'x-requested-with'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'x-requested-with', 'Accept', 'Origin'],
   preflightContinue: false,
   optionsSuccessStatus: 200
-};
-
-app.use(cors(corsOptions));
+}));
 
 // Rate limiting
 const limiter = rateLimit({
