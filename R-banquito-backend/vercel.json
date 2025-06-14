@@ -20,5 +20,7 @@
   "env": {
     "NODE_ENV": "production",
     "VERCEL_ENV": "production"
-  }
+  },
+  "installCommand": "npm install && npm install pg pg-hstore --save",
+  "buildCommand": "npm run build"
 }
