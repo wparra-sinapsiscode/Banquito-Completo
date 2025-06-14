@@ -26,6 +26,7 @@ const corsOptions = {
     const staticOrigins = [
       'http://localhost:2000',
       'http://localhost:3000',
+      'https://banquito-frontend.vercel.app',
       'https://banquito-frontend-git-main-williams-projects-3d9bf414.vercel.app',
       'https://banquito-system.vercel.app'
     ];
@@ -123,6 +124,16 @@ app.use('/api/v1/reports', require('./src/routes/reports.routes'));
 app.use('/api/v1/notifications', require('./src/routes/notifications.routes'));
 app.use('/api/v1/calendar', require('./src/routes/calendar.routes'));
 app.use('/api/v1/savings', require('./src/routes/savings.routes'));
+
+// Ruta de test CORS
+app.get('/api/v1/test-cors', (req, res) => {
+  res.json({
+    success: true,
+    message: 'CORS funcionando correctamente',
+    origin: req.headers.origin,
+    timestamp: new Date().toISOString()
+  });
+});
 
 // Ruta 404
 app.use('*', (req, res) => {
