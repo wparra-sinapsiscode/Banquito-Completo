@@ -16,15 +16,69 @@ app.use(helmet({
   crossOriginResourcePolicy: { policy: "cross-origin" }
 }));
 
-// CORS más permisivo para solucionar problemas de Vercel
-app.use(cors({
-  origin: true, // Permitir todos los orígenes temporalmente
+// CORS configurado para producción y desarrollo
+const corsOptions = {
+  origin: function (origin, callback) {
+    // Permitir requests sin origin (mobile apps, etc.)
+    if (!origin) return callback(null, true);
+    
+    // Combinar orígenes estáticos con los de variables de entorno
+    const staticOrigins = [
+      'http://localhost:2000',
+      'http://localhost:3000',
+      'https://banquito-frontend-git-main-williams-projects-3d9bf414.vercel.app',
+      'https://banquito-system.vercel.app'
+    ];
+    
+    // Agregar orígenes de FRONTEND_URL (puede ser múltiples separados por coma)
+    const envOrigins = process.env.FRONTEND_URL ? 
+      process.env.FRONTEND_URL.split(',').map(url => url.trim()) : [];
+    
+    const allowedOrigins = [...staticOrigins, ...envOrigins].filter(Boolean);
+    
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      // En desarrollo, permitir todos los orígenes de Vercel preview
+      if (process.env.NODE_ENV === 'development' || origin.includes('vercel.app')) {
+        callback(null, true);
+      } else {
+        callback(new Error('No permitido por CORS'));
+      }
+    }
+  },
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'x-requested-with', 'Accept', 'Origin'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
+  allowedHeaders: [
+    'Content-Type', 
+    'Authorization', 
+    'X-Requested-With', 
+    'Accept', 
+    'Origin',
+    'Access-Control-Allow-Origin',
+    'Access-Control-Allow-Headers',
+    'Access-Control-Allow-Methods'
+  ],
+  exposedHeaders: ['Authorization'],
   preflightContinue: false,
   optionsSuccessStatus: 200
-}));
+};
+
+app.use(cors(corsOptions));
+
+// Middleware adicional para headers CORS
+app.use((req, res, next) => {
+  // Permitir preflight requests
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Origin', req.headers.origin || '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS,PATCH');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With, Accept, Origin');
+    res.header('Access-Control-Allow-Credentials', 'true');
+    res.sendStatus(200);
+  } else {
+    next();
+  }
+});
 
 // Rate limiting
 const limiter = rateLimit({

@@ -1,6 +1,8 @@
 // Configuración base de la API
 const API_BASE_URL = process.env.REACT_APP_API_URL ? `${process.env.REACT_APP_API_URL}/api/v1` : 'http://localhost:2001/api/v1';
 
+console.log('🔧 API_BASE_URL configurada:', API_BASE_URL);
+
 // Helper para manejar respuestas
 const handleResponse = async (response) => {
   if (!response.ok) {
