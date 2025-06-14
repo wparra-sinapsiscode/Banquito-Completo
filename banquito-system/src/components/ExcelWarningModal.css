@@ -1,0 +1,303 @@
+.excel-warning-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+}
+
+.excel-warning-modal {
+  background: white;
+  border-radius: 15px;
+  max-width: 600px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.excel-warning-modal .modal-header {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  padding: 20px 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 15px 15px 0 0;
+}
+
+.excel-warning-modal .modal-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.excel-warning-modal .close-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.excel-warning-modal .close-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.1);
+}
+
+.excel-warning-modal .modal-body {
+  padding: 25px;
+}
+
+.success-message {
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.success-icon {
+  font-size: 1.5rem;
+}
+
+.success-message p {
+  margin: 0;
+  color: #155724;
+  font-weight: 500;
+}
+
+.warning-section {
+  background: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.warning-section h4 {
+  margin: 0 0 15px 0;
+  color: #856404;
+  font-size: 1.1rem;
+}
+
+.excel-message {
+  background: white;
+  border: 2px solid #856404;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.message-text {
+  margin: 0;
+  font-style: italic;
+  color: #495057;
+  font-size: 0.95rem;
+}
+
+.solution h5 {
+  margin: 0 0 10px 0;
+  color: #155724;
+  font-size: 1rem;
+}
+
+.solution ol {
+  margin: 0;
+  padding-left: 25px;
+}
+
+.solution li {
+  margin-bottom: 8px;
+  color: #495057;
+  line-height: 1.5;
+}
+
+.solution strong {
+  color: #155724;
+  font-weight: 600;
+}
+
+.why-section {
+  background: #e3f2fd;
+  border: 1px solid #bbdefb;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.why-section h4 {
+  margin: 0 0 10px 0;
+  color: #1565c0;
+  font-size: 1rem;
+}
+
+.why-section p {
+  margin: 0;
+  color: #495057;
+  line-height: 1.6;
+}
+
+.alternatives {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.alternatives h4 {
+  margin: 0 0 15px 0;
+  color: #495057;
+  font-size: 1rem;
+}
+
+.alternatives ul {
+  margin: 0;
+  padding-left: 25px;
+}
+
+.alternatives li {
+  margin-bottom: 8px;
+  color: #495057;
+  line-height: 1.5;
+}
+
+.alternatives strong {
+  color: #1e3a8a;
+}
+
+.excel-warning-modal .modal-footer {
+  padding: 20px 25px;
+  border-top: 1px solid #dee2e6;
+  display: flex;
+  justify-content: center;
+  background: #f8f9fa;
+  border-radius: 0 0 15px 15px;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 10px rgba(30, 58, 138, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 15px rgba(30, 58, 138, 0.4);
+}
+
+/* Dark mode support */
+.dark-mode .excel-warning-modal {
+  background: #1f2937;
+  color: #f9fafb;
+}
+
+.dark-mode .excel-warning-modal .modal-header {
+  background: linear-gradient(135deg, #111827 0%, #1f2937 100%);
+}
+
+.dark-mode .success-message {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.3);
+}
+
+.dark-mode .success-message p {
+  color: #34d399;
+}
+
+.dark-mode .warning-section {
+  background: rgba(251, 191, 36, 0.1);
+  border-color: rgba(251, 191, 36, 0.3);
+}
+
+.dark-mode .warning-section h4 {
+  color: #fbbf24;
+}
+
+.dark-mode .excel-message {
+  background: #111827;
+  border-color: #fbbf24;
+}
+
+.dark-mode .message-text {
+  color: #e5e7eb;
+}
+
+.dark-mode .solution h5 {
+  color: #34d399;
+}
+
+.dark-mode .solution li {
+  color: #e5e7eb;
+}
+
+.dark-mode .why-section {
+  background: rgba(59, 130, 246, 0.1);
+  border-color: rgba(59, 130, 246, 0.3);
+}
+
+.dark-mode .why-section h4 {
+  color: #60a5fa;
+}
+
+.dark-mode .why-section p {
+  color: #e5e7eb;
+}
+
+.dark-mode .alternatives {
+  background: rgba(75, 85, 99, 0.2);
+  border-color: rgba(107, 114, 128, 0.3);
+}
+
+.dark-mode .alternatives h4 {
+  color: #e5e7eb;
+}
+
+.dark-mode .alternatives li {
+  color: #e5e7eb;
+}
+
+.dark-mode .alternatives strong {
+  color: #60a5fa;
+}
+
+.dark-mode .excel-warning-modal .modal-footer {
+  background: rgba(31, 41, 55, 0.5);
+  border-top-color: rgba(107, 114, 128, 0.3);
+}

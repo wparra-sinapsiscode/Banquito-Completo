@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(mkdir:*)",
+      "Bash(grep:*)",
+      "Bash(rg:*)",
+      "Bash(npx eslint:*)",
+      "Bash(find:*)",
+      "Bash(npm run build:*)",
+      "Bash(node:*)",
+      "Bash(rg:*)",
+      "Bash(npm start)",
+      "Bash(npm ls:*)",
+      "Bash(rm:*)",
+      "Bash(npm run migrate:fresh:*)",
+      "Bash(test -f .env)",
+      "Bash(sudo service:*)",
+      "Bash(npx sequelize-cli:*)"
+    ],
+    "deny": []
+  }
+}
