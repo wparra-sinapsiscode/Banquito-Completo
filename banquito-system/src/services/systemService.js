@@ -4,19 +4,8 @@ const systemService = {
   // Obtener todas las configuraciones del sistema
   getSettings: async () => {
     try {
-      // Llamar directamente usando fetch sin autenticación ya que es endpoint público
-      const response = await fetch('http://localhost:2001/api/v1/system/settings', {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      });
-      
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      
-      const result = await response.json();
+      // Usar el servicio API que ya tiene la configuración correcta
+      const result = await api.get('/system/settings');
       console.log('🔍 Respuesta completa del servidor:', result);
       return result.data; // El backend devuelve { success: true, data: {...} }
     } catch (error) {
