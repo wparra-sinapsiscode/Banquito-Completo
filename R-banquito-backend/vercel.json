@@ -2,19 +2,19 @@
   "version": 2,
   "builds": [
     {
-      "src": "api/index.js",
+      "src": "server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
       "src": "/api/v1/(.*)",
-      "dest": "/api/index.js",
+      "dest": "/server.js",
       "methods": ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
     },
     {
       "src": "/(.*)",
-      "dest": "/api/index.js"
+      "dest": "/server.js"
     }
   ],
   "env": {
@@ -22,10 +22,5 @@
     "VERCEL_ENV": "production"
   },
   "installCommand": "npm install && npm install pg pg-hstore --save",
-  "buildCommand": "npm run build",
-  "functions": {
-    "api/index.js": {
-      "includeFiles": "node_modules/pg/**"
-    }
-  }
+  "buildCommand": "npm run build"
 }
