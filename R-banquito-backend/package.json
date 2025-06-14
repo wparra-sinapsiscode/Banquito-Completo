@@ -32,7 +32,6 @@
     "express-rate-limit": "^7.1.5",
     "joi": "^17.11.0",
     "dotenv": "^16.3.1",
-    "winston": "^3.11.0",
     "express-validator": "^7.0.1",
     "sequelize-cli": "^6.6.2"
   },
