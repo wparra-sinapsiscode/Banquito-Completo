@@ -175,7 +175,7 @@ const SavingsPlan = ({ memberName, memberId, memberData, settings, onSavingsUpda
           enabled: true,
           plan_days: selectedPlan,
           start_date: new Date().toISOString().split('T')[0],
-          tea: TEA,
+          tea: 0.02,
           initial_amount: parseFloat(savingsAmount)
         };
         response = await savingsService.updateSavingsPlan(existingPlanId, updateData);
@@ -196,7 +196,7 @@ const SavingsPlan = ({ memberName, memberId, memberData, settings, onSavingsUpda
           interest: interest,
           totalAmount: parseFloat(savingsAmount) + interest,
           status: 'active',
-          TEN: TEN
+          TEN: 0.02
         };
         
         setActiveSavings(mappedPlan);
@@ -439,7 +439,7 @@ const SavingsPlan = ({ memberName, memberId, memberData, settings, onSavingsUpda
           <div className="formula-info">
             <h5>📊 Fórmula de cálculo:</h5>
             <p>TEM = (1 + TEA)^(1/12) - 1</p>
-            <p>TEM mensual = {((Math.pow(1 + TEA, 1/12) - 1) * 100).toFixed(4)}%</p>
+            <p>TEM mensual = {((Math.pow(1 + 0.02, 1/12) - 1) * 100).toFixed(4)}%</p>
           </div>
         </div>
       )}
